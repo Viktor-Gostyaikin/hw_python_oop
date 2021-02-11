@@ -23,7 +23,7 @@ class Calculator:
     def get_remained(self):
         limit = self.limit
         expence = self.get_today_stats()
-        remained: float = limit - expence
+        remained = limit - expence
         return remained
 
 
