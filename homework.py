@@ -19,7 +19,6 @@ class Calculator:
         date_week_ago = today - dt.timedelta(days=7)
         return sum(record.amount for record in self.records
                    if date_week_ago < record.date <= today)
-    # Метод должен выдать разницу.
 
     def get_remained(self):
         limit = self.limit
@@ -78,17 +77,3 @@ class CashCalculator(Calculator):
         if self.get_today_stats() < self.limit:
             return ('На сегодня осталось '
                     f'{debt_2} {cur}')
-
-
-cash_calculator = CashCalculator(1000)
-# дата в параметрах не указана,
-# так что по умолчанию к записи
-# должна автоматически добавиться сегодняшняя дата
-cash_calculator.add_record(Record(amount=509, comment='кофе'))
-# и к этой записи тоже дата должна добавиться автоматически
-cash_calculator.add_record(Record(amount=500, comment='Серёге за обед'))
-# а тут пользователь указал дату, сохраняем её
-cash_calculator.add_record(Record(amount=3000,
-                                  comment='бар в Танин др',
-                                  date='08.11.2019'))
-print(str(cash_calculator.get_today_cash_remained('rub')))
