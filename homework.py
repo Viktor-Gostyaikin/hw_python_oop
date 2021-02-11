@@ -57,9 +57,10 @@ class CashCalculator(Calculator):
     def get_today_cash_remained(self, currency):
         remained = self.get_remained()
         currency_dir = {
-                        'eur': ['Euro', self.EURO_RATE],
-                        'usd': ['USD', self.USD_RATE],
-                        'rub': ['руб', 1]}
+            'eur': ['Euro', self.EURO_RATE],
+            'usd': ['USD', self.USD_RATE],
+            'rub': ['руб', 1]
+        }
         list_of_currency = list(currency_dir.keys())
         debt_1 = remained / currency_dir[currency][1]
         debt_2 = abs(round(debt_1, 2))
