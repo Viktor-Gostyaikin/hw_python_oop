@@ -64,8 +64,8 @@ class CaloriesCalculator(Calculator):
 
 class CashCalculator(Calculator):
     '''Класс калькулятора денег наследующий класс Calculator.
-        Метод get_today_cash_remained определяет, сколько ещё денег
-можно потратить сегодня в рублях, долларах или евро'''
+    Метод get_today_cash_remained определяет, сколько ещё денег
+    можно потратить сегодня в рублях, долларах или евро'''
     USD_RATE = 72.12
     EURO_RATE = 85.21
     RUB_RATE = 1
