@@ -1,6 +1,6 @@
+import datetime as dt
 '''Два калькулятора: для подсчёта денег(CashCalculator) и
 калорий(CaloriesCalculator)'''
-import datetime as dt
 
 
 class Calculator:
@@ -56,10 +56,11 @@ class CaloriesCalculator(Calculator):
     Метод get_calories_remained определяет, сколько ещё калорий можно/нужно
     получить сегодня'''
     def get_calories_remained(self):
-        if self.get_remained() <= 0:
+        g_rem = self.get_remained()
+        if g_rem <= 0:
             return 'Хватит есть!'
         return ('Сегодня можно съесть что-нибудь ещё, но с общей '
-                f'калорийностью не более {self.get_remained()} кКал')
+                f'калорийностью не более {g_rem} кКал')
 
 
 class CashCalculator(Calculator):
@@ -78,14 +79,13 @@ class CashCalculator(Calculator):
             'rub': ('руб', self.RUB_RATE,)
         }
         currency_name, currency_rate = currency_dir[currency]
-        list_of_currency = list(currency_dir.keys())
         debt_1 = remained / currency_rate
         debt_2 = abs(round(debt_1, 2))
-        if self.get_remained() == 0:
+        if remained == 0:
             return 'Денег нет, держись'
         if currency not in currency_dir:
-            return f'Валюта неверная, правильные: {list_of_currency}'
-        if self.get_remained() < 0:
+            return (f'Валюта неверная, правильные: {currency_dir}')
+        if remained < 0:
             return(
                 'Денег нет, держись: твой долг '
                 f'- {debt_2} {currency_name}'
