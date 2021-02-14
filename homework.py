@@ -81,10 +81,11 @@ class CashCalculator(Calculator):
         currency_name, currency_rate = currency_dir[currency]
         debt_1 = remained / currency_rate
         debt_2 = abs(round(debt_1, 2))
+#        list_of_currency = currency_dir.keys()
         if remained == 0:
             return 'Денег нет, держись'
         if currency not in currency_dir:
-            return (f'Валюта неверная, правильные: {currency_dir}')
+            raise ValueError('валюта неверная, правильные: usd, eur, руб.')
         if remained < 0:
             return(
                 'Денег нет, держись: твой долг '
@@ -92,3 +93,6 @@ class CashCalculator(Calculator):
             )
         return ('На сегодня осталось '
                 f'{debt_2} {currency_name}')
+
+
+cash_calculator = CashCalculator(1000)
