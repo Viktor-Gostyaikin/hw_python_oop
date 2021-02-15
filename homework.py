@@ -92,4 +92,4 @@ class CashCalculator(Calculator):
             )
         return ('На сегодня осталось '
                 f'{debt_2} {currency_name}')
-
+    
